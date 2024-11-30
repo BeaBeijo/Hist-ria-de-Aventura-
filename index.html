@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600&display=swap" rel="stylesheet">
+    <title>Em Busca da Relíquia Mística</title>
+</head>
+<body>
+    <main>
+        <!-- Passo inicial -->
+        <div class="passo ativo" id="passo-0">
+            <img src="img/inicio.png" alt="Mapa antigo mostrando uma relíquia escondida">
+            <p>Você encontra um mapa antigo indicando a localização de uma relíquia mística. Ele mostra duas rotas iniciais possíveis para começar a busca. Para onde você vai?</p>
+            <button class="btn-proximo" data-proximo="1">Bahia</button>
+            <button class="btn-proximo" data-proximo="2">Minas Gerais</button>
+        </div>
+
+        <!-- Passo 1: Bahia -->
+        <div class="passo" id="passo-1">
+            <p>Na Bahia, você visita o Pelourinho e encontra um enigma gravado na parede de uma igreja histórica. O enigma aponta para o sertão ou para um antigo mosteiro. Para onde você segue?</p>
+            <button class="btn-proximo" data-proximo="3">Explorar o sertão</button>
+            <button class="btn-proximo" data-proximo="4">Investigar o mosteiro</button>
+        </div>
+
+        <!-- Passo 2: Minas Gerais -->
+        <div class="passo" id="passo-2">
+            <p>Em Minas Gerais, você chega a Ouro Preto e descobre um baú trancado. Um comerciante local afirma que a chave está escondida em uma mina abandonada ou em uma igreja barroca. Qual você escolhe?</p>
+            <button class="btn-proximo" data-proximo="5">Explorar a mina</button>
+            <button class="btn-proximo" data-proximo="6">Visitar a igreja</button>
+        </div>
+
+        <!-- Passo 3: Sertão -->
+        <div class="passo" id="passo-3">
+            <p>Explorando o sertão, você encontra um oásis com inscrições antigas. Elas revelam que a relíquia está no Rio Grande do Sul.</p>
+            <button class="btn-proximo" data-proximo="7">Ir para o Rio Grande do Sul</button>
+        </div>
+
+        <!-- Passo 4: Mosteiro -->
+        <div class="passo" id="passo-4">
+            <p>No mosteiro, você encontra um pergaminho indicando que a relíquia foi enviada para o Maranhão.</p>
+            <button class="btn-proximo" data-proximo="8">Seguir para o Maranhão</button>
+        </div>
+
+        <!-- Passo 5: Mina -->
+        <div class="passo" id="passo-5">
+            <p>Na mina abandonada, você encontra a chave, mas o baú não revela nada além de mais pistas para seguir para o Paraná.</p>
+            <button class="btn-proximo" data-proximo="9">Ir para o Paraná</button>
+        </div>
+
+        <!-- Passo 6: Igreja -->
+        <div class="passo" id="passo-6">
+            <p>Na igreja barroca, um vitral revela uma pista indicando que a relíquia está no Amazonas.</p>
+            <button class="btn-proximo" data-proximo="10">Ir para o Amazonas</button>
+        </div>
+
+        <!-- Passo 7: Rio Grande do Sul -->
+        <div class="passo" id="passo-7">
+            <p>No Rio Grande do Sul, você descobre que a relíquia foi guardada no topo de uma montanha. Após uma longa escalada, você a encontra!</p>
+            <button class="btn-proximo" data-proximo="11">Admirar a relíquia</button>
+        </div>
+
+        <!-- Passo 8: Maranhão -->
+        <div class="passo" id="passo-8">
+            <p>No Maranhão, os Lençóis Maranhenses escondem a entrada para uma caverna secreta onde a relíquia foi deixada. Você finalmente a encontra!</p>
+            <button class="btn-proximo" data-proximo="11">Admirar a relíquia</button>
+        </div>
+
+        <!-- Passo 9: Paraná -->
+        <div class="passo" id="passo-9">
+            <p>No Paraná, você explora as Cataratas do Iguaçu e encontra a relíquia escondida em uma caverna próxima.</p>
+            <button class="btn-proximo" data-proximo="11">Admirar a relíquia</button>
+        </div>
+
+        <!-- Passo 10: Amazonas -->
+        <div class="passo" id="passo-10">
+            <p>No Amazonas, entre a selva densa, você descobre um templo perdido com a relíquia no altar central.</p>
+            <button class="btn-proximo" data-proximo="11">Admirar a relíquia</button>
+        </div>
+
+        <!-- Passo 11: Final -->
+        <div class="passo" id="passo-11">
+            <img src="img/relíquia.png" alt="A relíquia mística brilhando intensamente">
+            <p>Você encontrou a relíquia mística! Ela brilha intensamente, e você sente que cumpriu uma missão grandiosa. A relíquia agora está em segurança.</p>
+            <button onclick="reiniciar()">Reiniciar Aventura</button>
+        </div>
+    </main>
+    <script>
+        document.querySelectorAll('.btn-proximo').forEach(button => {
+            button.addEventListener('click', function () {
+                const passoAtual = this.closest('.passo');
+                const proximoPasso = document.getElementById(`passo-${this.dataset.proximo}`);
+                
+                passoAtual.classList.remove('ativo');
+                proximoPasso.classList.add('ativo');
+            });
+        });
+
+        function reiniciar() {
+            document.querySelectorAll('.passo').forEach(passo => passo.classList.remove('ativo'));
+            document.getElementById('passo-0').classList.add('ativo');
+        }
+    </script>
+</body>
+</html>
